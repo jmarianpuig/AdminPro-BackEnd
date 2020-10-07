@@ -16,6 +16,10 @@ app.use( express.json());
 // Base de datos
 dbConnection();
 
+// Directorio Público
+app.use( express.static('public'));
+
+
 // Middlewares
 
 
