@@ -1,3 +1,7 @@
+/**
+ *   Ruta: '/api/Usuarios' 
+ **/ 
+
 const { Router } = require('express');
 const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos')
@@ -23,6 +27,7 @@ router.post( '/',
 router.put( '/:id',
     [
         validarJWT,
+        check('uid', 'El id del usuario tiene que ser un id valido').isMongoId(),
         check('nombre', 'El nombre es obligatorio').not().isEmpty(),
         check('email', 'El email es obligatorio').isEmail(),
         check('role', 'El role es obligatorio').not().isEmpty(),
